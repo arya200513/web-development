@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                flex-direction: column;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            form {
+                border: 2px solid#000;
+                padding: 25px 20px;
+                border-radius: 10px;
+                padding: 10px;
+                background-color:white;
+                outline: none;
+            }
+            </style>
+            </head>
+            <body>
+               <h2>Enter your Information</h2>
+            <form>
+            <lable for="fname">First Name:</lable>
+            <input type="text" id="fname" name="fname"><br><br>
+            <lable for="lname">Last Name:</lable>
+            <input type="text" id="lname" name="lname"><br><br>
+            <lable for="mobno">Mobile Number:</lable>
+            <input type="tel" id="mobno" name="mobno"><br><br>
+            <lable for="gmail">Gmail.Id:</lable>
+            <input type="email" id="gmail" name="gmail"><br><br>
+            <lable for="address">Address:</lable>
+            <input type="address" id="address" name="address" rows="10" cols="20"><br>
+            <p>Gender</p>
+            <input type="checkbox" id="mango">
+            <lable for="male">male</lable><br>
+            <input type="checkbox" id="female">
+            <lable for="female">Female</lable><br><br>
+            <label for="hobbies">Hobbies:</label>
+            <input type="checkbox" id="hobby1" name="hobbies" value="Reading"> Reading
+            <input type="checkbox" id="hobby2" name="hobbies" value="Hiking"> Hiking
+            <input type="checkbox" id="hobby3" name="hobbies" value="Gaming"> Gaming
+            <input type="checkbox" id="hobby3" name="hobbies" value="Running"> Running <br><br>
+            <label for="city">City:</label>
+            <select id="city" name="city">
+            <option value="Select your city">Select your City</option>
+            <option value="Kanpur">Kanpur</option>
+            <option value="agra">Agra</option>
+            <option value="lucknow">Lucknow</option>
+            <option value="varanasi">Varanasi</option>
+            </select><br><br>
+            <input type="Submit">
+    </body>
+    </html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Interface with Add Contact and Camera</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ece5dd;
+      color: #333;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Sidebar (Contacts) */
+    .sidebar {
+      width: 25%;
+      background-color: #075e54;
+      color: white;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-header {
+      padding: 15px;
+      font-size: 18px;
+      background-color: #128c7e;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar-search {
+      padding: 10px;
+      background-color: #ece5dd;
+      display: flex;
+    }
+
+    .sidebar-search input {
+      width: 90%;
+      padding: 8px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .sidebar-search button {
+      background-color: transparent;
+      border: none;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    .contact-item {
+      padding: 15px;
+      background-color: #128c7e;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-item:hover {
+      background-color: #075e54;
+    }
+
+    .contact-item img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    /* Chat Section */
+    .chat-section {
+      width: 75%;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-header {
+      padding: 15px;
+      background-color: #075e54;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-window {
+      flex-grow: 1;
+      padding: 10px;
+      overflow-y: scroll;
+      background-color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message {
+      max-width: 60%;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 10px;
+    }
+
+    .sent {
+      background-color: #dcf8c6;
+      align-self: flex-end;
+    }
+
+    .received {
+      background-color: #ffffff;
+      align-self: flex-start;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input-container {
+      display: flex;
+      padding: 10px;
+      background-color: #ece5dd;
+    }
+
+    .chat-input-container input {
+      flex-grow: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input-container button {
+      padding: 10px;
+      border-radius: 50%;
+      margin-left: 10px;
+      border: none;
+      background-color: #075e54;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Camera Modal */
+    .camera-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .camera-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .camera-container video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .camera-container button {
+      margin: 5px;
+      padding: 10px 20px;
+      background: #075e54;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .camera-container button:hover {
+      background: #128c7e;
+    }
+
+    .camera-container img {
+      margin-top: 10px;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* Add Contact Modal */
+    .add-contact-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .add-contact-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+    }
+
+    .add-contact-container input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .add-contact-container button {
+      padding: 10px;
+      background-color: #075e54;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .add-contact-container button:hover {
+      background-color: #128c7e;
+    }
+  </style>
+</head>
+<body>
+<div class="app-container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <span>WhatsApp</span>
+      <button onclick="toggleAddContactModal()">➕</button>
+    </div>
+    <div class="sidebar-search">
+      <input type="text" placeholder="Search contacts...">
+    </div>
+    <div id="contactList">
+      <div class="contact-item" onclick="startChat('Alice', '12345')">
+        <img src="https://via.placeholder.com/40" alt="Alice">
+        <span>Alice</span>
+      </div>
+      <div class="contact-item" onclick="startChat('Bob', '67890')">
+        <img src="https://via.placeholder.com/40" alt="Bob">
+        <span>Bob</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Section -->
+  <div class="chat-section">
+    <div class="chat-header" id="chatHeader">
+      <span>Select a Contact</span>
+    </div>
+    <div class="chat-window" id="chatWindow"></div>
+    <div class="chat-input-container">
+      <input id="chatInput" placeholder="Type a message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>
+
+<!-- Camera Modal -->
+<div class="camera-modal" id="cameraModal">
+  <div class="camera-container">
+    <video id="video" autoplay></video>
+    <button onclick="capturePhoto()">Capture</button>
+    <button onclick="closeCameraModal()">Close</button>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <img id="photo" alt="Captured Photo">
+  </div>
+</div>
+
+<!-- Add Contact Modal -->
+<div class="add-contact-modal" id="addContactModal">
+  <div class="add-contact-container">
+    <h3>Add Contact</h3>
+    <input type="text" id="contactName" placeholder="Enter Name">
+    <input type="text" id="contactNumber" placeholder="Enter Number">
+    <button onclick="openCamera()">Capture Photo</button>
+    <img id="contactPhoto" src="" alt="Contact Photo" style="display:none; width: 100px; margin: 10px;">
+    <button onclick="addContact()">Add</button>
+    <button onclick="toggleAddContactModal()">Cancel</button>
+  </div>
+</div>
+
+<script>
+  const cameraModal = document.getElementById("cameraModal");
+  const addContactModal = document.getElementById("addContactModal");
+  const video = document.getElementById("video");
+  const canvas = document.getElementById("canvas");
+  const photo = document.getElementById("photo");
+  const contactPhoto = document.getElementById("contactPhoto");
+
+  function toggleAddContactModal() {
+    addContactModal.style.display = addContactModal.style.display === "flex" ? "none" : "flex";
+  }
+
+  function openCamera() {
+    toggleAddContactModal();
+    toggleCameraModal();
+  }
+
+  function toggleCameraModal() {
+    cameraModal.style.display = cameraModal.style.display === "flex" ? "none" : "flex";
+    if (cameraModal.style.display === "flex") {
+      startCamera();
+    } else {
+      stopCamera();
+    }
+  }
+
+  function startCamera() {
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then((stream) => {
+        video.srcObject = stream;
+      })
+      .catch((err) => console.error("Camera error:", err));
+  }
+
+  function stopCamera() {
+    const stream = video.srcObject;
+    if (stream) {
+      const tracks = stream.getTracks();
+      tracks.forEach((track) => track.stop());
+    }
+    video.srcObject = null;
+  }
+
+  function capturePhoto() {
+    const context = canvas.getContext("2d");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    const imageData = canvas.toDataURL("image/png");
+    contactPhoto.src = imageData;
+    contactPhoto.style.display = "block";
+    toggleCameraModal();
+    toggleAddContactModal();
+  }
+
+  function addContact() {
+    const contactList = document.getElementById("contactList");
+    const name = document.getElementById("contactName").value.trim();
+    const number = document.getElementById("contactNumber").value.trim();
+    const imgSrc = contactPhoto.src;
+
+    if (name && number) {
+      const contactItem = document.createElement("div");
+      contactItem.className = "contact-item";
+      contactItem.onclick = () => startChat(name, number);
+      contactItem.innerHTML = `
+        <img src="${imgSrc || 'https://via.placeholder.com/40'}" alt="${name}">
+        <span>${name}</span>
+      `;
+      contactList.appendChild(contactItem);
+      toggleAddContactModal();
+    }
+  }
+
+  function startChat(name, number) {
+    const chatHeader = document.getElementById("chatHeader");
+    chatHeader.innerHTML = `<span>${name}</span>`;
+  }
+
+  function sendMessage() {
+    const chatWindow = document.getElementById("chatWindow");
+    const input = document.getElementById("chatInput");
+    const message = input.value.trim();
+    if (message) {
+      const messageDiv = document.createElement("div");
+      messageDiv.textContent = message;
+      messageDiv.className = "message sent";
+      chatWindow.appendChild(messageDiv);
+      input.value = "";
+    }
+  }
+</script>
+</body>
+</html>

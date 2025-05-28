@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Clone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar (Contacts) -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Chats</h2>
+            </div>
+            <div class="contacts-list">
+                <div class="contact">
+                    <div class="contact-info">
+                        <img src="images.jfif" alt="contact1" />
+                        <div class="contact-details">
+                            <p class="contact-name">Jagdish mishra</p>
+                            <p class="last-message">Hey, how's it going?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="contact-info">
+                        <img src="insta.jpg" alt="contact2" />
+                        <div class="contact-details">
+                            <p class="contact-name">arti mishra</p>
+                            <p class="last-message">Can you send me the report?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Window -->
+        <div class="chat-window">
+            <div class="chat-header">
+                <img src="images.jfif" alt="contact1" />
+                <h3>amitabh bachan</h3>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message from-user">
+                    <p>Hello, how are you?</p>
+                    <span class="time">10:15 AM</span>
+                </div>
+                <div class="message from-contact">
+                    <p>I'm good, thanks! How about you?</p>
+                    <span class="time">10:17 AM</span>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Type a message..." />
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

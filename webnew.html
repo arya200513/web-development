@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Exceptional Website</title>
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="../css_file/new.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Dark Mode Toggle -->
+    <div id="dark-mode-toggle">
+        <button id="toggle-theme">Switch to Dark Mode</button>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Welcome to My Exceptional Website</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#stats">Our Impact</a></li>
+                    <li><a href="#map">Find Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Parallax -->
+    <section id="hero" class="hero parallax">
+        <h2>Your Dream Website Awaits</h2>
+        <p>We create modern, fast, and visually appealing websites.</p>
+        <button class="cta-button">Get Started</button>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>We are passionate about crafting unique digital experiences that inspire and delight users worldwide.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Web Design</h3>
+                    <p>We design stunning and responsive websites.</p>
+                </div>
+                <div class="service">
+                    <h3>Development</h3>
+                    <p>Custom development to meet your business needs.</p>
+                </div>
+                <div class="service">
+                    <h3>SEO</h3>
+                    <p>Optimize your website for search engines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <h3>What services do you offer?</h3>
+                    <p class="hidden">We offer web design, development, SEO, and much more!</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How long does it take to build a website?</h3>
+                    <p class="hidden">It depends on the complexity of the website, typically between 2-6 weeks.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you offer ongoing support?</h3>
+                    <p class="hidden">Yes, we provide maintenance and updates for your website.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Stats Section -->
+    <section id="stats" class="section">
+        <div class="container">
+            <h2>Our Impact</h2>
+            <div class="stats">
+                <div class="stat">
+                    <h3><span class="counter" data-target="1500">0</span>+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat">
+                    <h3><span class="counter" data-target="500">0</span>+</h3>
+                    <p>Satisfied Clients</p>
+                </div>
+                <div class="stat">
+                    <h3><span class="counter" data-target="100">0</span>+</h3>
+                    <p>Awards Won</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section id="map" class="section">
+        <div class="container">
+            <h2>Find Us</h2>
+            <div id="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0865328415055!2d-122.41941538489198!3d37.77492977975967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808bfb3dcaa5%3A0x3fbf7c5bdb4f5a98!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1696152795456!5m2!1sen!2sin"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget">
+        <button id="chat-toggle">💬 Chat with Us</button>
+        <div id="chat-box" class="hidden">
+            <p>Hello! How can we help you?</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 My Exceptional Website. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Link to JavaScript -->
+    <script src="../js_file/script.js"></script>
+</body>
+</html>

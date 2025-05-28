@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #ff4c4c;
+    color: white;
+    padding: 1rem 2rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+}
+
+.hero {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f5f5f5;
+}
+
+.search-form {
+    margin-top: 1rem;
+}
+
+.search-form input {
+    padding: 0.5rem;
+    width: 300px;
+}
+
+.search-form button {
+    padding: 0.5rem;
+    background-color: #ff4c4c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.popular, .offers {
+    padding: 2rem;
+}
+
+.restaurant-grid {
+    display: flex;
+    gap: 1rem;
+}
+
+.restaurant-card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    width: 200px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #222;
+    color: white;
+}

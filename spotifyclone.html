@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Clone</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h2 {
+      margin: 10px 0;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    .button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #1db954;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #1aa34a;
+    }
+
+    .now-playing {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #282828;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Spotify Clone</h1>
+  </div>
+
+  <div class="grid" id="songList">
+    <!-- Songs will be dynamically added here -->
+  </div>
+
+  <div class="now-playing" id="nowPlaying" style="display: none;">
+    <div>
+      <h3 id="nowPlayingTitle">Now Playing: </h3>
+      <p id="nowPlayingArtist"></p>
+    </div>
+    <button class="button" onclick="pauseSong()">Pause</button>
+  </div>
+
+  <script>
+    const songs = [
+      { title: "Sataranga", artist: "Unknown Artist" },
+      { title: "Ranjhan", artist: "Unknown Artist" },
+      { title: "Pahle Bhi Mai", artist: "Unknown Artist" },
+      { title: "Jaadu", artist: "Unknown Artist" },
+      { title: "Ve Kamleya", artist: "Unknown Artist" },
+      { title: "Ikktara", artist: "Unknown Artist" },
+      { title: "Aae Dil Hai Mushkil", artist: "Unknown Artist" },
+    ];
+
+    const songList = document.getElementById("songList");
+    const nowPlaying = document.getElementById("nowPlaying");
+    const nowPlayingTitle = document.getElementById("nowPlayingTitle");
+    const nowPlayingArtist = document.getElementById("nowPlayingArtist");
+
+    let currentSong = null;
+
+    function playSong(song) {
+      currentSong = song;
+      nowPlaying.style.display = "flex";
+      nowPlayingTitle.textContent = `Now Playing: ${song.title}`;
+      nowPlayingArtist.textContent = song.artist;
+    }
+
+    function pauseSong() {
+      nowPlaying.style.display = "none";
+      currentSong = null;
+    }
+
+    function createSongCard(song) {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const title = document.createElement("h2");
+      title.textContent = song.title;
+
+      const artist = document.createElement("p");
+      artist.textContent = song.artist;
+
+      const button = document.createElement("button");
+      button.className = "button";
+      button.textContent = "Play";
+      button.onclick = () => playSong(song);
+
+      card.appendChild(title);
+      card.appendChild(artist);
+      card.appendChild(button);
+
+      return card;
+    }
+
+    songs.forEach(song => {
+      const card = createSongCard(song);
+      songList.appendChild(card);
+    });
+  </script>
+</body>
+</html>

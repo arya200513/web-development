@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar Example</title>
+    <style>
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: Arial, sans-serif;
+        }
+        html, body {
+            height: 100%;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            padding: 10px 20px;
+            color: silver;
+        }
+        .logo {
+            font-size: 1.5cm;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 15px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .nav-links a:hover {
+            background-color: white;
+            border-radius: 5px;
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+        .fakeimage{
+        background-color: #aaa;
+         width: 100%;
+         padding: 20px;
+        }
+        main {
+            max-height: calc(100vh - 400px); /* Full height minus header and footer height */
+            background-color: #f0f0f0;
+            padding: 50px;
+            margin-bottom: 100px; /* Space between main and footer */
+        }
+        form {
+            border: 2px solid #000;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: white;
+            width: 400px; /* Reduced width */
+            margin: 0; /* Center form horizontally */
+        }
+        form input, form select, form label {
+            display: block;
+            width: 100%; /* Make inputs take full width of form */
+            margin-bottom: 10px; /* Add space between elements */
+        }
+        footer {
+            background-color: black;
+            color: silver;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+        }
+        footer p {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="./DALL·E 2024-11-25 20.27.01 - An imaginative and creative logo design for 'Arya Shukla,' combining artistic typography with a modern and minimalist aesthetic. The initials 'A' and .webp" height="70" width="70" alt="Logo">
+        <div class="logo">Arya Shukla Industries</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+    </nav>
+    <main>
+        <p><b>Welcome to Arya Shukla Industries! How may I help you.</b></p>
+        <p><strong>If you want to work with us then fill in the details</strong></p>
+        <a><img src="Mahakal-Aarti-Image-1.webp"></a>    <p>
+            <b>
+             JAI MAHAKAL🙏
+            </b>
+            </p>
+        <h2>Enter your Information</h2>
+        <form>
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname">
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname">
+            <label for="mobno">Mobile Number:</label>
+            <input type="tel" id="mobno" name="mobno">
+            <label for="gmail">Gmail.Id:</label>
+            <input type="email" id="gmail" name="gmail">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address">
+            <p>Gender</p>
+            <input type="checkbox" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="checkbox" id="female" name="gender" value="female">
+            <label for="female">Female</label><br><br>
+            <label for="work">YOU ARE WORKING IN WHICH FIELD :</label>
+            <input type="checkbox" id="work1" name="work" value="Metals"> Metals
+            <input type="checkbox" id="work2" name="work" value="Plastic"> Plastic
+            <input type="checkbox" id="work3" name="work" value="Wood"> Wood
+            <input type="checkbox" id="work4" name="work" value="Polymers"> Polymers <br><br>
+            <label for="city">City:</label>
+            <select id="city" name="city">
+                <option value="Select your city">Select your City</option>
+                <option value="Kanpur">Kanpur</option>
+                <option value="agra">Agra</option>
+                <option value="lucknow">Lucknow</option>
+                <option value="varanasi">Varanasi</option>
+            </select><br>
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+    <footer>
+        <p><strong>Name:</strong> Arya Shukla</p>
+        <p><strong>Address:</strong> 123 Main Street, Cityville</p>
+        <p><strong>Phone:</strong> +1 234-567-8901</p>
+    </footer>
+</body>
+</html>
